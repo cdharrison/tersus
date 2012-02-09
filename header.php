@@ -16,8 +16,10 @@
 			foreach ($options as $value) {
 				if (get_settings( $value['id'] ) === FALSE) { $$value['id'] = $value['std']; } else { $$value['id'] = get_settings( $value['id'] ); }
 			}
-		?>			
-		<?php switch ($tersus_style_sheet) {
+		?>
+		<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" media="screen" />
+			
+		<?php /* switch ($tersus_style_sheet) {
 			case "Default": ?>
 				<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/style/css/layout.css" media="screen" />
 			<?php break; ?>	
@@ -27,7 +29,7 @@
 			<?php case "Advanced":?>
 				<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/style/css/layout-advanced.css" media="screen" />
 			<?php break; ?>
-		<?php } ?>
+		<?php } */ ?>
 		
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 		<link rel="profile" href="http://gmpg.org/xfn/11" />
@@ -50,13 +52,13 @@
 			// page-level ids or classes instead
 		?>
 
-		<?php if ($tersus_announcement_display == "1"): ?>
-		<section id="announcement">
-			<?php echo (stripslashes($tersus_announcement)); ?>
-		</section>
-		<?php endif; ?>
-		
 		<header>
+			<?php if ($tersus_announcement_display == "1"): ?>
+				<section id="announcement">
+					<?php echo (stripslashes($tersus_announcement)); ?>
+				</section>
+			<?php endif; ?>
+			
 			<h1><a href="<?php echo get_option('home'); ?>/" title="Back to the home page"><?php bloginfo('name'); ?></a></h1>
 			<p><?php bloginfo('description'); ?></p>
 		</header>
