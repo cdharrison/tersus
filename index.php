@@ -14,8 +14,10 @@
 
 		<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 		
+			<p class="published" title="<?php the_time('c') ?>"><?php the_date() ?></p>
+			
 			<?php if(!has_post_format('aside') && !has_post_format('image')) { ?>
-				<p class="published" title="<?php the_time('c') ?>"><?php the_date() ?></p>
+				
 				<h2 class="entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent link to “<?php the_title_attribute(); ?>”"><?php the_title(); ?></a></h2>
 
 			<?php }
@@ -47,9 +49,12 @@
 						</ul>
 					</li>
 				</ul>
+				
+				<p><a href="<?php the_permalink(); ?>#comment" title="View or contribute to the discussion"><?php comments_number('No Comments', '1 Comment', '% Comments'); ?></a></p>
+				
 			<?php } ?>
 			
-			<p><a href="<?php the_permalink(); ?>#comment" title="View or contribute to the discussion"><?php comments_number('No Comments', '1 Comment', '% Comments'); ?></a></p>
+			
 			<?php edit_post_link('Edit', '<p>', '</p>'); ?>
 		</article>
 
